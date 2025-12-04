@@ -1,0 +1,63 @@
+# inform the RunManager to systematically save the seed
+/random/setSavingFlag 1
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+#CHOSING THE BEAM ENERGY (monochromatic beam)
+#######################################
+#/gun/energy 800 MeV #200 MeV/n
+
+#CHOSING THE PARTICLE
+#######################################
+/gun/particle ion
+/gun/ion 6 12 6
+
+###############################
+#/gun/particle anti_He3
+#/gun/particle anti_alpha
+###############################
+
+#CHOSING THE FILE NAMES (2 ntuples are activated)
+#!!!!!!!!!! IMPORTANT >>> REMEMBER TO SET THE ANTIPARTICLE FLAG IN MYDET.HH TO 0 <<<< !!!!!!!!!!!!!!
+#######################################
+# ID = 2 nutple for particle reconstruction
+#######################################
+#histo need to be activated.
+/analysis/ntuple/setActivation 0 false    #raw anti particle ntuple
+/analysis/ntuple/setActivation 1 false    #rec anti particle ntuple
+/analysis/ntuple/setActivation 2 true     #rec particle ntuple
+
+/analysis/ntuple/setFileName 2 C12_10e7_rec.root
+
+/run/printProgress 1000000
+
+/run/beamOn 10000000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Seting the output file name
+# ID = 0 nutple for particle reconstruction
+/analysis/ntuple/setFileName 0 Ionization_check_He4_rec.root 
+

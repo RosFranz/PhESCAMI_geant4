@@ -1,0 +1,39 @@
+# inform the RunManager to systematically save the seed
+/random/setSavingFlag 1
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+
+#CHOSING THE BEAM ENERGY (monochromatic beam)
+#######################################
+#/gun/energy 200 MeV
+
+#CHOSING THE PARTICLE
+#######################################
+/gun/particle anti_proton
+
+###############################
+#/gun/particle anti_He3
+#/gun/particle anti_alpha
+###############################
+
+#CHOSING THE FILE NAMES (2 ntuples are activated)
+#!!!!!!!!!! IMPORTANT >>> REMEMBER TO SET THE ANTIPARTICLE FLAG IN MYDET.HH TO 1 <<<< !!!!!!!!!!!!!!
+#######################################
+# ID = 0 nutple for anti-particle raw data (all hits)
+# ID = 1 nutple for anti-particle reconstructed data (Trigger)
+#######################################
+/analysis/ntuple/setActivation 0 true    #raw anti particle ntuple
+/analysis/ntuple/setActivation 1 true    #rec anti particle ntuple
+/analysis/ntuple/setActivation 2 false   #rec particle ntuple
+
+/analysis/ntuple/setFileName 0 pbar_10e7_raw.root
+/analysis/ntuple/setFileName 1 pbar_10e7_rec.root
+
+/run/printProgress 1000000
+
+/run/beamOn 10000000

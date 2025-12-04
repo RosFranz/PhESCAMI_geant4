@@ -1,0 +1,26 @@
+
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+# ----- RUN2 : He4 ------
+
+#fixing the energy per nucleon
+/gun/energy 40 GeV #10 GeV per nucleon
+
+#fixing the particle type
+/gun/particle alpha
+
+#reset the engine from the saved .rndm file
+/random/resetEngineFrom run0evt16.rndm
+
+#Seting the output file name
+# ID = 0 nutple for particle reconstruction
+/analysis/ntuple/setFileName 0 ev16_He4_check.root 
+
+
+#number of events
+/run/beamOn 1

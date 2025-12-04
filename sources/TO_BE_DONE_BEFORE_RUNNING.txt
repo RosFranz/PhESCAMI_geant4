@@ -1,0 +1,39 @@
+COSA DA FARE PRIMA DI LANCIARE UNA SIMULAZIONE ADHD
+
+--- GeneratorAction ---
+1) settare il numero corretto di nucleoni nella GeneratorAction
+2) settare la randomizzazione degli eventi
+3) selezionare lo spettro energetico corretto
+
+--- MyDet.hh ---
+4) scegliere che particella sparare e settare "antiparticle" su 1 o 0
+
+
+
+
+
+24/10
+Sono tornato nell'assetto usato per i check sulla ionizzazione
+quindi ho disattivato la randomizzazione dello spettro e delle 
+posizioni da cui sparo il primario. 
+
+Ho modificato la funzione di invisibilita' che adesso nasconde 5/6
+degli strati del TOF e tutto l'HeCal
+
+Ho modificato la condizione di "trigger" rimuovendo la richiesta
+di avere almeno un rilascio energetico nell'HeCal
+
+Ho modificato la visualizzazione in modo da mostrare anche i fotoni
+
+
+
+12/06/2024
+
+--- GeneratorAction ---
+1) aggiunta della General Particle Source attivabile con il booleano 
+   fRandPrimaryGPS hardcoded true. 
+
+--- Build folder ---
+2) Usare la corretta macro (.mac), facendo attenzione alla direzione 
+   da cui proviene il fascio. Infatti alcuni sparano lungo Z, altri 
+   lungo X

@@ -1,0 +1,51 @@
+# inform the RunManager to systematically save the seed
+/random/setSavingFlag 0
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+#CHOSING THE PARTICLE
+#######################################
+/gps/verbose 0
+/gps/particle anti_proton
+
+#CHOSING THE ENERGY SPECTRA
+#######################################
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/centre 0 0 +152.0 cm
+/gps/pos/halfx 160.0 cm
+/gps/pos/halfy 160.0 cm
+/gps/ang/type iso
+
+/gps/ene/type Pow
+/gps/ene/alpha -1.0
+/gps/ene/min 10 MeV
+/gps/ene/max 400 MeV
+/gps/ang/maxtheta 90 deg
+/gps/ang/mintheta 0 deg
+
+#CHOSING THE FILE NAMES (2 ntuples are activated)
+#!!!!!!!!!! IMPORTANT >>> REMEMBER TO SET THE ANTIPARTICLE FLAG IN MYDET.HH TO 1 <<<< !!!!!!!!!!!!!!
+#######################################
+# ID = 0 nutple for anti-particle raw data (all hits)
+# ID = 1 nutple for anti-particle reconstructed data (Trigger)
+#######################################
+/analysis/h1/setActivation 0 true
+
+/analysis/ntuple/setActivation 0 true    #raw anti particle ntuple
+/analysis/ntuple/setActivation 1 true    #rec anti particle ntuple
+/analysis/ntuple/setActivation 2 false   #rec particle ntuple
+
+/analysis/ntuple/setFileName 0 ../ROOT_files/pbar_10e6_STAT_gps_1raw.root
+
+/analysis/h1/setFileName 0 ../ROOT_files/pbar_10e6_STAT_gps_1rec.root
+/analysis/ntuple/setFileName 1 ../ROOT_files/pbar_10e6_STAT_gps_1rec.root
+
+/run/printProgress 100000
+
+/run/beamOn 1000000
+

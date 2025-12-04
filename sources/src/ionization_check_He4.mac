@@ -1,0 +1,40 @@
+# Macro file for example ADHD
+# YOU HAVE TO DEACTIVATE THE RANDOM DIRECTION
+# AND ALSO THE RANDOMIZATION OF THE ENERGY SPECTRA
+# 
+# Can be run in batch, without graphic
+#
+# Used firing particle along a straight line.
+# In order to check if ionization follows a Z^2 law MIP
+# proton, He4 and Carbon 12 are fired.
+
+
+
+
+
+# inform the RunManager to systematically save the seed
+/random/setSavingFlag 1
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+# ----- RUN2 : He4 ------
+
+#fixing the energy per nucleon
+/gun/energy 40 GeV #10 GeV per nucleon
+
+#fixing the particle type
+/gun/particle alpha
+
+#Seting the output file name
+# ID = 0 nutple for particle reconstruction
+/analysis/ntuple/setFileName 0 Ionization_check_He4_rec.root 
+
+
+/run/printProgress 1000
+
+#number of events
+/run/beamOn 10000

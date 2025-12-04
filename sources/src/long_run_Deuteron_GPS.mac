@@ -1,0 +1,48 @@
+# inform the RunManager to systematically save the seed
+/random/setSavingFlag 1
+
+# Only single thread
+/run/numberOfThreads 1
+
+# Initialization of the run
+/run/initialize
+
+#CHOSING THE PARTICLE
+#######################################
+/gps/verbose 0
+/gps/particle deuteron
+
+#CHOSING THE ENERGY SPECTRA
+#######################################
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/centre 0 0 +152.0 cm
+/gps/pos/halfx 760.0 cm
+/gps/pos/halfy 760.0 cm
+/gps/ang/type iso
+
+/gps/ene/type Pow
+/gps/ene/alpha -1.0
+/gps/ene/min 20 MeV
+/gps/ene/max 200000 MeV
+/gps/ang/maxtheta 90 deg
+/gps/ang/mintheta 0 deg
+
+#CHOSING THE FILE NAME (1 ntuples is activated)
+#!!!!!!!!!! IMPORTANT >>> REMEMBER TO SET THE ANTIPARTICLE FLAG IN MYDET.HH TO 0 <<<< !!!!!!!!!!!!!!
+#######################################
+# ID = 2 nutple for particle reconstruction
+#######################################
+/analysis/h1/setActivation 0 true
+
+/analysis/ntuple/setActivation 0 false    #raw anti particle ntuple
+/analysis/ntuple/setActivation 1 false    #rec anti particle ntuple
+/analysis/ntuple/setActivation 2 true     #rec particle ntuple
+
+/analysis/h1/setFileName 0 ../ROOT_files/Deuteron_10e7_gps_rec.root
+/analysis/ntuple/setFileName 2 ../ROOT_files/Deuteron_10e7_gps_rec.root
+
+
+/run/printProgress 1000000
+
+/run/beamOn 10000000
